@@ -1,25 +1,13 @@
-import React, { useState, useEffect } from 'react';
+import React, { useReducer } from 'react';
 import './App.css';
 
 function App() {
-  const [mood, setMood] = useState('happy');
-  const [secondMood, setSecondMood] = useState('tired');
-
-  useEffect(() => {
-    console.log(mood);
-  }, [mood]);
+  const [checked, toggleChecked] = useReducer((checked) => !checked, true);
 
   return (
     <div className="App">
-      <h2>
-        {mood} and {secondMood}
-      </h2>
-      <button onClick={() => setMood('happy')}>Happy</button>
-      <button onClick={() => setMood('frustrated')}>Frustrated</button>
-      <button onClick={() => setMood('sad')}>Sad</button>
-      <button onClick={() => setSecondMood(['tired', 'exhausted'][Math.floor(Math.random() * 2)])}>
-        Random second mood
-      </button>
+      <input type="checkbox" name="chk" id="chk" onChange={toggleChecked} value={checked} />
+      <p>{checked ? 'Checked' : 'Not checked'}</p>
     </div>
   );
 }
