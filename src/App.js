@@ -6,7 +6,7 @@ function App() {
 
   useEffect(() => {
     console.log(mood);
-  });
+  }, []); //Empty array makes the useEffect be called only once.
 
   return (
     <div className="App">
